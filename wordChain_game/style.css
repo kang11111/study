@@ -1,0 +1,34 @@
+/*body{
+  color: #333;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+}
+*{
+  margin: 0;
+  padding: 0;
+
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+}*/
+
+/* *{margin: 0; padding: 0;} */
+
+#container{margin: auto; max-width: 400px;}
+#container>p{font-size: 30px; font-weight: bold; text-align: center;}
+
+#user_info{margin-bottom: 20px; text-align: center;}
+#user_info>p{display: inline-block;}
+
+#reset_btn{display: none;}
+
+#user_turn{max-width: 300px;}
+#user_turn>span{display: block; padding: 3px 0 3px 0;}
+#user_turn>i{display: block;font-style: inherit;}
+#user_turn>div{display: inline-block; margin-left: 15px;}
