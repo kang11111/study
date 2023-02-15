@@ -1,0 +1,25 @@
+html,body{height: 100%; overflow: hidden;}
+
+#calc_container{
+  box-sizing: border-box;
+  width: 500px;
+  height: 100%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+#calc_container>input{
+  width: 99.4%;
+  height: 150px;
+}
+
+#calc_container>button{
+  width: 25%;
+  height: calc(100% / 8);
+  float: left;
+}
+
+#calc_container>button>img{
+  max-width: 90%;
+  max-height: 90%;
+}
