@@ -134,6 +134,7 @@ function rearPriority() { // =버튼을 클릭했을 때 실행되는 계산 함
       addNum = ''; //addNum 초기화
     }
   }
+
   for(let i=0; i<addNum.length; i++) {
     const char = addNum.charAt(i); //addNum에 있는 문자를 순서대로 하나씩 확인
     switch(char) {
