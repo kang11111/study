@@ -1,21 +1,26 @@
-html,body{height: 100%; overflow: hidden;}
+html,body{height: 100%; overflow: hidden; background: #cecece;}
 
 #calc_container{
   box-sizing: border-box;
-  width: 500px;
-  height: 100%;
+  max-width: 500px;
+  height: calc(100% - 100px);
   margin: auto;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 #calc_container>input{
-  width: 99.4%;
+  width: 100%;
   height: 150px;
+  text-align: right;
+  font-size: 30px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 #calc_container>button{
   width: 25%;
-  height: calc(100% / 8);
+  height: calc(100% / 7);
   float: left;
 }
 
