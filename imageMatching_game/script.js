@@ -65,8 +65,13 @@ resetButton.addEventListener("click", ()=>{ //다시 시작
 function matching() {
   if(imageArr[0] == userBtn){ //도형배열 0번와 사용자입력번호가 일치하면
     score += 10; //점수 10점 추가
-    combo += 1; //콤보 1점 추가
-    scoreContainer.innerHTML = `${score}점`
+    combo += 1; //1콤보 추가
+    if(combo > 25){ //콤보 25점 이후에는 콤보 점수 추가
+      totalScore = score + combo * 1;
+    }else{
+      totalScore = score
+    }
+    scoreContainer.innerHTML = `${totalScore}점`
     comboContainer.innerHTML = `${combo}콤보`
     imageArr.shift(); //도형배열 0번 삭제
     imageNum = Math.floor((Math.random() * 2+1)); //이미지번호 1개를 랜덤으로 추출
@@ -92,13 +97,12 @@ let timeInterval = setInterval(() => { //1초가 지날 때마다 실행됨
   time -= 1;
   timeContainer.innerHTML = `${time}초`;
   if(time == 0){ //0초가 되면
+    totalScoreContainer.innerHTML = `총점 : ${totalScore}`;
     clearInterval(timeInterval);
-    totalScore = score + combo * 100; //총점 계산
     arrowLeft.disabled = true; //화살표 버튼 눌러도 안 눌리게 함
     arrowRight.disabled = true;
     arrowLeft.style.cursor = "default"; //커서 모양 변경
     arrowRight.style.cursor = "default";
     gameOverContainer.style.display = "block";
-    totalScoreContainer.innerHTML = `총점 : ${totalScore}`;
   }
 }, 1000);
