@@ -1,5 +1,4 @@
 const imageContainer = document.getElementById('image_container')
-
 let imageArr = new Array(); //랜덤으로 지정된 도형 모양에 따른 번호를 저장하는 배열
 let image = '';
 let imageNum;
@@ -37,7 +36,7 @@ for(let i=0;i<lastNum;i++){ //도형 4개 생성
 imageContainer.innerHTML = image;
 
 window.addEventListener("keydown", (e) => { //화살표 버튼을 눌렀을 때 사용자가 누른 버튼 번호 저장
-  if(time == 0){ //시간초과가 되면 키보드 안 눌리게 함
+  if(time <= 0){ //시간초과가 되면 키보드 안 눌리게 함
     e.preventDefault();
   }else{
     if(e.code == 'ArrowLeft'){
@@ -63,16 +62,16 @@ resetButton.addEventListener("click", ()=>{ //다시 시작
 })
 
 function matching() {
-  if(imageArr[0] == userBtn){ //도형배열 0번와 사용자입력번호가 일치하면
-    score += 10; //점수 10점 추가
-    combo += 1; //1콤보 추가
+  if(imageArr[0] == userBtn && time > 0){ //도형배열 0번와 사용자입력번호가 일치하면
     if(combo > 25){ //콤보 25점 이후에는 콤보 점수 추가
       totalScore = score + combo * 1;
     }else{
-      totalScore = score
+      totalScore = score;
     }
-    scoreContainer.innerHTML = `${totalScore}점`
-    comboContainer.innerHTML = `${combo}콤보`
+    score += 10; //점수 10점 추가
+    combo += 1; //1콤보 추가
+    scoreContainer.innerHTML = `${totalScore}점`;
+    comboContainer.innerHTML = `${combo}콤보`;
     imageArr.shift(); //도형배열 0번 삭제
     imageNum = Math.floor((Math.random() * 2+1)); //이미지번호 1개를 랜덤으로 추출
     imageArr.push(imageNum); //도형번호배열에 랜덤으로 추출한 1개 이미지 번호를 넣기
@@ -87,9 +86,9 @@ function matching() {
       image += `<img class="img" src="./img/image${imageArr[j]}.png" alt="">`;
     }
     imageContainer.innerHTML = image;
-  }else if(imageArr[0] != userBtn){ //일치하지않으면
+  }else if(imageArr[0] != userBtn && time > 0){ //일치하지않으면
     combo = 0;
-    comboContainer.innerHTML = `${combo}콤보`
+    comboContainer.innerHTML = `${combo}콤보`;
   }
 }//fn end
 
@@ -97,8 +96,8 @@ let timeInterval = setInterval(() => { //1초가 지날 때마다 실행됨
   time -= 1;
   timeContainer.innerHTML = `${time}초`;
   if(time == 0){ //0초가 되면
-    totalScoreContainer.innerHTML = `총점 : ${totalScore}`;
     clearInterval(timeInterval);
+    totalScoreContainer.innerHTML = `총점 : ${totalScore}`;
     arrowLeft.disabled = true; //화살표 버튼 눌러도 안 눌리게 함
     arrowRight.disabled = true;
     arrowLeft.style.cursor = "default"; //커서 모양 변경
