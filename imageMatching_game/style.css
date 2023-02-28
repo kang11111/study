@@ -5,7 +5,8 @@ body{
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
-  user-select:none
+  user-select:none;
+  touch-action: manipulation;
 }
 /* 이미지 드래그 방지 */
 img{
