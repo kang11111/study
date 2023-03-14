@@ -1,0 +1,85 @@
+button > img {
+  width: 20px;
+}
+
+#container {
+  margin: 0 auto;
+}
+#container > h1:first-child {
+  background: rgb(21, 182, 203);
+  font-size: 40px;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+}
+#container #add_box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#container #add_box > input {
+  width: 90%;
+  padding: 10px;
+}
+#container #add_box > button {
+  width: 10%;
+  min-width: 50px;
+  padding: 10px;
+  background: rgb(246, 249, 38);
+}
+#container #add_box > button > img {
+  width: 25px;
+}
+#container ul#tab_box {
+  display: flex;
+  border-bottom: 1px solid rgb(246, 249, 38);
+}
+#container ul#tab_box li {
+  position: relative;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+#container ul#tab_box li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0px;
+  height: 3px;
+  background: rgb(246, 249, 38);
+  transition: width 0.3s;
+}
+#container ul#tab_box li:hover:after {
+  width: 100%;
+}
+#container ul#tab_box li.active {
+  background: rgb(246, 249, 38);
+  font-weight: bold;
+  cursor: default;
+}
+#container ul#tab_box li.active::after {
+  width: 0;
+}
+#container div#work_box > div {
+  display: flex;
+  border-bottom: 2px solid rgb(21, 182, 203);
+}
+#container div#work_box > div > div {
+  padding: 10px;
+  width: 80%;
+}
+#container div#work_box > div > div.done_work {
+  font-style: italic;
+  text-decoration: line-through;
+  background: rgb(197, 224, 228);
+}
+#container div#work_box > div button {
+  width: 10%;
+  min-width: 40px;
+}
+#container div#work_box > div button.check_btn {
+  display: none;
+}
+#container div#work_box > div button.reset_btn {
+  display: none;
+}
