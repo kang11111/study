@@ -38,7 +38,9 @@ function addList() { //리스트 추가하기
     alert("할 일을 입력해주세요");
   }else{
     listArr.unshift(listObj); //배열에 저장
-    filterArr.unshift(listObj); //탭을 변경한 상태에서도 추가됨
+    if(mode == "ongoing"){
+      filterArr.unshift(listObj); //탭을 변경한 상태에서도 추가됨
+    }
     localStorage.setItem('listArr',JSON.stringify(listArr)); //로컬스토리지에도 저장
     render();
   }
