@@ -37,7 +37,8 @@ function addList() { //리스트 추가하기
   if(addInput.value.length == 0){
     alert("할 일을 입력해주세요");
   }else{
-    listArr.push(listObj); //배열에 저장
+    listArr.unshift(listObj); //배열에 저장
+    filterArr.unshift(listObj); //탭을 변경한 상태에서도 추가됨
     localStorage.setItem('listArr',JSON.stringify(listArr)); //로컬스토리지에도 저장
     render();
   }
@@ -92,6 +93,12 @@ function deleteClick(id) { //delete 버튼 눌렀을 때
     if(listArr[i].id == id){
       listArr.splice(i,1);
       localStorage.setItem('listArr',JSON.stringify(listArr));
+      break;
+    }
+  }
+  for(let i=0;i<filterArr.length;i++){ //탭을 변경한 상태에서도 삭제됨
+    if(filterArr[i].id == id){
+      filterArr.splice(i,1);
       break;
     }
   }
