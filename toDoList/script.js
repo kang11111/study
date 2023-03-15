@@ -5,8 +5,16 @@ let listArr = [];
 let filterArr = [];
 let mode = 'all';
 
+// localStorage.clear();
+window.localStorage; //로컬스토리지 사용
+listArr = JSON.parse(localStorage.getItem('listArr')); //시작하자마자 로컬스토리지에 있는 값 가져와서 저장하기
+if(!listArr){
+  listArr = [];
+}
+render(); //그리기
+
 addBtn.addEventListener("click",addList); //버튼을 클릭하면
-addInput.addEventListener("keydown",function (e) {
+addInput.addEventListener("keydown",function (e) { //엔터를 입력해도
   if(e.key == 'Enter'){
     addList();
   }
@@ -16,7 +24,7 @@ for(let i=0;i<tabs.length;i++){
   tabs[i].addEventListener("click",function (event) {
     filter(event);
   });
-  tabs[i].addEventListener("click",handleClick);
+  tabs[i].addEventListener("click",handleClick); //클릭된 tab만 이벤트
 }
 
 function addList() { //리스트 추가하기
@@ -29,7 +37,8 @@ function addList() { //리스트 추가하기
   if(addInput.value.length == 0){
     alert("할 일을 입력해주세요");
   }else{
-    listArr.push(listObj);
+    listArr.push(listObj); //배열에 저장
+    localStorage.setItem('listArr',JSON.stringify(listArr)); //로컬스토리지에도 저장
     render();
   }
   addInput.value = '';
@@ -71,6 +80,7 @@ function toggleClick(id) { //check 버튼, reset 버튼 눌렀을 때
   for(let i=0;i<listArr.length;i++){
     if(listArr[i].id == id){
       listArr[i].isComplete = !listArr[i].isComplete;
+      localStorage.setItem('listArr',JSON.stringify(listArr));
       break;
     }
   }
@@ -81,11 +91,11 @@ function deleteClick(id) { //delete 버튼 눌렀을 때
   for(let i=0;i<listArr.length;i++){
     if(listArr[i].id == id){
       listArr.splice(i,1);
+      localStorage.setItem('listArr',JSON.stringify(listArr));
       break;
     }
   }
   render();
-  console.log(listArr)
 }
 
 function filter(event) { //전체, 진행중, 진행완료 나눠서 배열에 저장하고 보여주기
